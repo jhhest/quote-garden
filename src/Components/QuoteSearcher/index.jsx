@@ -17,7 +17,11 @@ export class QuoteSearcher extends Component {
 
   showQuotes = quotesArray =>
     quotesArray.map(quote => (
-      <Quote text={quote.quoteText} author={quote.quoteAuthor} />
+      <Quote
+        text={quote.quoteText}
+        author={quote.quoteAuthor}
+        key={quote._id}
+      />
     ));
 
   render() {
@@ -27,7 +31,9 @@ export class QuoteSearcher extends Component {
       <Fragment>
         <h1 style={{ textAlign: "center" }}>QuoteSearcher.</h1>
         {loading && <p>Loading...</p>}
-        {!loading && this.showQuotes(quotes)}
+        <section id="center-quotes">
+          {!loading && this.showQuotes(quotes)}
+        </section>
       </Fragment>
     );
   }

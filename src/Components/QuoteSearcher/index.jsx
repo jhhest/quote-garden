@@ -33,10 +33,6 @@ export class QuoteSearcher extends Component {
         <h1>QuoteSearcher.</h1>
         {this.showQuotes(this.state.quotes)}
         <h1>Below an Example of one Quote Element:</h1>
-        <Quote
-          text="Empty your mind. Be formless, shapeless, like water. If you put water in a cup, it becomes the cup. You put water in a bottle, it becomes the bottle. You put it in a teapot, it becomes the teapot. Water can flow or it can crash. Be water, my friend."
-          author="Bruce Lee"
-        />
       </Fragment>
     );
   }

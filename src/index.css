@@ -1,6 +1,6 @@
 /* @import-normalize; */
 @import url("https://fonts.googleapis.com/css?family=Caveat|Dancing+Script|Sacramento&display=swap");
-blockquote > p {
+/* blockquote > p {
   font-size: 2rem;
   font-family: "Sacramento", cursive;
   margin-top: 0;
@@ -9,4 +9,39 @@ blockquote {
   background-color: lightblue;
   padding: 1rem;
   margin: 2rem;
+} */
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+  blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote p {
+    display: inline;
+  }
+
+button {
+  border-radius: 0.25rem;
+  padding: 0.125rem;
+  background-color: white; 
+}
+
+.fa-thumbs-up {
+  color: green;
+  padding: 0.5rem;
+}
+
+.fa-thumbs-down {
+  color: red;
+  padding: 0.5rem;
 }

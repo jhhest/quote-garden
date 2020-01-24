@@ -3,7 +3,7 @@ import Quote from "./Quote";
 
 export class QuoteSearcher extends Component {
   state = {
-    loading: true,
+    fetching: true,
     quotes: []
   };
 
@@ -11,7 +11,7 @@ export class QuoteSearcher extends Component {
     fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
       .then(resolve => resolve.json())
       .then(fetchedQuotes =>
-        this.setState({ quotes: fetchedQuotes.results, loading: false })
+        this.setState({ quotes: fetchedQuotes.results, fetching: false })
       );
   }
 

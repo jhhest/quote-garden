@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>no title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}/**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}.emoji {
+  height: 0.8em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}
+    /* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+    </style>
+    
+  </head>
+  <body for="html-export">
+    <div class="mume markdown-preview">
+    <html><head></head><body><div><h1 class="mume-header" id="react-homework" ebook-toc-level-1 heading="React Homework">React Homework</h1>
+
+<p>In this homework assignment, you will be creating a React app in which the quotes of the public &quot;Quote Garden&quot; API can be interactively explored.</p>
+<h2 class="mume-header" id="a-quick-note-on-plagiarism" ebook-toc-level-2 heading="A quick note on plagiarism">A quick note on plagiarism</h2>
+
+<p><strong>This is a formal evaluation!</strong> You are supposed to make your homework individually. You are allowed to use any materials in the reader or on the internet, but you are NOT allowed to look at each other&apos;s code. <em><strong>Plagiarism is a violation of the Academy contract and is not in your best interest. Do not discuss the contents of the assignment with your fellow students.</strong></em></p>
+<h2 class="mume-header" id="how-to-make-and-submit-your-homework" ebook-toc-level-2 heading="How to make and submit your homework">How to make and submit your homework</h2>
+
+<ul>
+<li>Put your homework project in a (public) GitHub repository, and send a link to that repository to <a href="file:///home/jhhest/Documents/codaisseur/Home work Assignements/quote-garden/teachers@codaisseur.com">teachers@codaisseur.com</a> before Saturday 22:00. Without running into errors, we should be able to clone the repository, install the dependencies, and then run it with <code>npm run start</code>, as usual.</li>
+<li>You are allowed to leave <code>console.log</code>s and comments in your code, but please make your code reasonably indented/formatted, and remove unnecessary code. This will make your teachers happy &#x1F603;</li>
+<li>Your teachers will also be happy if you make enough git commits. This way, we can see your progress. For example, committing after each step.</li>
+</ul>
+<h2 class="mume-header" id="learning-goals-and-some-tips-tricks" ebook-toc-level-2 heading="Learning goals and some tips &amp;amp; tricks">Learning goals and some tips &amp; tricks</h2>
+
+<p>For transparency and clarity, these are the learning goals we will be testing:</p>
+<ul>
+<li>Using <code>create-react-app</code></li>
+<li>Creating components</li>
+<li>Composing components and passing them data via props</li>
+<li>Designing and managing component local state with <code>this.setState</code></li>
+<li>Mapping over arrays of data in the <code>render()</code> method</li>
+<li>Using the <code>componentDidMount</code> lifecycle hook and fetching data from an API</li>
+<li>Lifting state to a parent component, and passing callback props to children</li>
+</ul>
+<p>If this sounds like a large list, it is, and it&apos;s because you&apos;ve learned a tremendous amount of things this week! Don&apos;t let it scare or overwhelm you though, you have seen all these things, and the homework exercise will guide you through the process. Also, half of the task of programming is to find the right resources. Don&apos;t hesitate to use the reader, Google (Stackoverlow), or the documentation links we provide below.</p>
+<p><strong>TIP: Read the assignment carefully!</strong> It is easy to accidentally deviate from an assignment, resulting in a frustrating homework experience. Taking the time to read the exercise can save you time and effort.</p>
+<p><strong>TIP: Don&apos;t get stuck!</strong> If you feel stuck, try taking a small walk, continuing on to a next step, or talking out loud about the problem you&apos;re facing (programmers call this &quot;rubber-ducking&quot;). Everybody can get stuck, but don&apos;t let it stop you.</p>
+<h2 class="mume-header" id="the-homework-exercise" ebook-toc-level-2 heading="The homework exercise">The homework exercise</h2>
+
+<h3 class="mume-header" id="step-1-setting-up" ebook-toc-level-3 heading="Step 1. Setting up">Step 1. Setting up</h3>
+
+<ul>
+<li>Create a React app with <code>create-react-app</code>. Clean up <code>App.js</code> by removing everything inside the <code>&lt;div className=&quot;App&quot;&gt;</code> element.</li>
+</ul>
+<h3 class="mume-header" id="step-2-adding-some-components" ebook-toc-level-3 heading="Step 2. Adding some components">Step 2. Adding some components</h3>
+
+<p>In the next steps, we&apos;re going to be fetching our quotes from the <a href="https://pprathameshmore.github.io/QuoteGarden/">Quote Garden API</a>. But first, let&apos;s &quot;hard-code&quot; some of these quotes into the app.</p>
+<ul>
+<li>
+<p>Create a component <code>QuoteSearcher</code>, and put some hard-coded quote data in its initial state, like so:</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript">state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  quotes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">&quot;_id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;5d91b45d9980192a317c8acc&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteText&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Notice that the stiffest tree is most easily cracked, while the bamboo or willow survives by bending with the wind.&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteAuthor&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Bruce Lee&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">&quot;_id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;5d91b45d9980192a317c8abe&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteText&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Give me six hours to chop down a tree and I will spend the first four sharpening the axe.&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteAuthor&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Abraham Lincoln&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string">&quot;_id&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;5d91b45d9980192a317c8955&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteText&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Good timber does not grow with ease; the stronger the wind, the stronger the trees.&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;quoteAuthor&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;J. Willard Marriott&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre><p>Compose a <code>QuoteSearcher</code> instance in the <code>App</code> component, so that we can look at it.</p>
+</li>
+<li>
+<p>Create a component <code>Quote</code>, that takes two props (the quote text and the quote author), and displays them. Show the quote first, and then the author, prepended by <em>&quot;By:&quot;</em>.</p>
+</li>
+<li>
+<p>Let the <code>QuoteSearcher</code> component map over the quotes in its state, and display each of them with the <code>Quote</code> component. Also, add a page title above this list. The result may look something like this (the choice of title and your styling does not matter):</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/bLupkln5/Image+2019-10-24+at+9.53.06+PM.png" alt></p>
+</li>
+</ul>
+<h3 class="mume-header" id="step-3-fetching-quotes-from-the-api" ebook-toc-level-3 heading="Step 3. Fetching quotes from the API">Step 3. Fetching quotes from the API</h3>
+
+<p>Now, let&apos;s make the <code>QuoteSearcher</code> component dynamically fetch qutoes from the API. We will be using the &quot;search&quot; endpoint at <code>https://quote-garden.herokuapp.com/quotes/search/:keyword</code>. For example, here are the results for &quot;tree&quot;: <a href="https://quote-garden.herokuapp.com/quotes/search/tree">https://quote-garden.herokuapp.com/quotes/search/tree</a>.</p>
+<ul>
+<li>
+<p>Change the initial state of the <code>QuoteSearcher</code> component to have an empty list of quotes. That is,</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts">state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  quotes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</pre></li>
+<li>
+<p>Add the <code>componentDidMount</code> lifecycle method to the component, and in it add a <code>fetch</code> call to <a href="https://quote-garden.herokuapp.com/quotes/search/tree">https://quote-garden.herokuapp.com/quotes/search/tree</a>, to fetch all the quotes that contain the keyword &quot;tree&quot;.</p>
+</li>
+<li>
+<p>When the data arrives, assign it (correctly) to component local state, so that the component automatically rerenders and displays all the found qoutes.</p>
+</li>
+<li>
+<p>Add an extra (boolean) state property called <code>fetching</code>, and (re-)assign it as necessary in <code>componentDidMount</code> so that the component knows when it is fetching data.</p>
+</li>
+<li>
+<p>In the <code>render()</code> method, use that state property to conditionally show a &quot;Loading...&quot; text instead of the quotes when fetching. The result may look something like this:</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/d5ubADlJ/Screen+Recording+2019-10-24+at+09.57+PM.gif" alt></p>
+</li>
+</ul>
+<h3 class="mume-header" id="step-4-add-a-like-dislike-feature-to-the-quotes" ebook-toc-level-3 heading="Step 4. Add a &amp;quot;like&amp;quot; / &amp;quot;dislike&amp;quot; feature to the quotes">Step 4. Add a &quot;like&quot; / &quot;dislike&quot; feature to the quotes</h3>
+
+<p>You might like some quotes and dislike others. We&apos;re going to add a feature that records whether you do or do not. For this step, we&apos;ve going to keep the state local to the <code>Quote</code> component.</p>
+<ul>
+<li>
+<p>Add two <code>&lt;button&gt;</code>s, for example <code>:)</code> and <code>:(</code> or <code>like</code> and <code>dislike</code>, so that the page looks like this:</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/04uk2vJO/Image+2019-10-24+at+10.04.48+PM.png" alt></p>
+</li>
+<li>
+<p>By using a new property in component local state, and the <code>onClick</code> attribute of the buttons, make it so that a user can like or dislike a quote. This liking or disliking should change the way the quote looks. For example, you can use the <code>style</code> attribute, and conditionally apply some CSS styles, like so: <code>style={{ fontWeight: &quot;bold&quot; }}</code>.</p>
+</li>
+<li>
+<p>The result may look something like this:</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/wbue6LqB/Screen+Recording+2019-10-24+at+10.12+PM.gif" alt></p>
+</li>
+</ul>
+<h3 class="mume-header" id="step-5-counting-liked-and-disliked-quotes" ebook-toc-level-3 heading="Step 5. Counting liked and disliked quotes">Step 5. Counting liked and disliked quotes</h3>
+
+<p>We want to count the number of quotes the user has liked and disliked. We want this to look something like this:</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/GGu0WyQo/Screen+Recording+2019-10-24+at+10.28+PM.gif" alt></p>
+<p>This is not the easiest task, we&apos;ll need to &quot;lift the likedness state up&quot; to the <code>QuoteSearcher</code> component.</p>
+<ul>
+<li>
+<p>The initial state property you used in the <code>Quote</code> component now has to be added to the quote object itself, after the quotes have been fetched, in <code>QuoteSearcher</code>. For example, by mapping over the fetch results, like so:</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts">data<span class="token punctuation">.</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">quote</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>quote<span class="token punctuation">,</span>
+    <span class="token comment">// your &quot;likedness&quot; property</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre></li>
+<li>
+<p>In the <code>render()</code> method of the <code>QuoteSearcher</code> component, calculate the total number of liked and disliked quotes. You probably want to use <code>filter</code> or <code>map</code> or <code>reduce</code> for this. Then, display these number at the top of the page. (See the example above.)</p>
+</li>
+<li>
+<p>Pass down extra props to the <code>Quote</code> components from the <code>QuoteSearcher</code> component: pass the <code>_id</code> of the quote, and your &quot;likedness&quot; property as well. This way, the <code>Quote</code> component knows &quot;which quote it is&quot; (with the <code>_id</code>), and whether it has been liked.</p>
+</li>
+<li>
+<p>Next, add a method <code>setLiked</code> to your <code>QuoteSearcher</code> component, and pass it down to the <code>Quote</code> components as a <em>callback prop</em>. For example, our example solution has a method like so:</p>
+<pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token function-variable function">setLiked</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">id<span class="token punctuation">,</span> liked</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;hello!&quot;</span><span class="token punctuation">,</span> id<span class="token punctuation">,</span> liked<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// update local state so that the</span>
+  <span class="token comment">//  quote with this id is liked</span>
+  <span class="token comment">//  or not liked</span>
+<span class="token punctuation">}</span>
+</pre><p>You&apos;re allowed to name the method differently, or add multiple methods, or pass different parameters. What matters is that the feature works, not exactly how you achieve this &#x1F603;</p>
+<p>Also, it&apos;s often good to wait with implementing this kind of method until we can test it.</p>
+</li>
+<li>
+<p>Update your <code>Quote</code> component so that it uses the new props it gets to style it according to whether it is liked or not.</p>
+</li>
+<li>
+<p>Update your <code>Quote</code> component so that it calls the callback prop (and passes it the right parameter(s)) when the buttons are clicked.</p>
+</li>
+<li>
+<p>Now, implement your <code>setLiked</code> (or differently named) method(s), so that they update the local state of the <code>QuoteSearcher</code> component in the right way. (Setting the &quot;likedness&quot; property of the right quote.)</p>
+</li>
+</ul>
+<h3 class="mume-header" id="step-6-searching-for-quotes" ebook-toc-level-3 heading="Step 6. Searching for quotes">Step 6. Searching for quotes</h3>
+
+<p>We&apos;re going to add a new feature: you can look for quotes by entering a keyword into an <code>&lt;input /&gt;</code> field. This input field is going to be a &quot;controlled component&quot;. It can be helpful to refer to the <a href="https://reactjs.org/docs/forms.html">React docs page</a> on this subject.</p>
+<ul>
+<li>
+<p>Add an input field to the top of the page. The input field will be a &quot;controlled&quot; component, which means that it reads its <code>value</code> from a property of component local state, and has an event listener attached to <code>onChange</code> that update that state property.</p>
+</li>
+<li>
+<p>Refactor the component so that the <code>fetch</code>ing logic which is in the <code>componentDidMount</code> method, is placed into a new method, for example called <code>search</code>. Also, make sure it uses the new state property for the search text instead of just &quot;tree&quot;.</p>
+</li>
+<li>
+<p>Add a button with the text &quot;Search!&quot; right next to the input field. When the user clicks on the button, a new search should be performed.</p>
+</li>
+<li>
+<p>Make sure that the &quot;Loading...&quot; indicator works properly. It should show up every time a search is performed, but of course only while the search is being done, and afterwards not any more.</p>
+</li>
+<li>
+<p>The result may look something like this:</p>
+<p><img src="https://p18.f3.n0.cdn.getcloudapp.com/items/YEuvZJ04/Screen+Recording+2019-10-24+at+11.01+PM.gif" alt></p>
+</li>
+</ul>
+<h3 class="mume-header" id="step-7-bonus-reparation-points" ebook-toc-level-3 heading="Step 7. Bonus / reparation points">Step 7. Bonus / reparation points</h3>
+
+<p>We will primarily be grading your homework based on the previous steps, and according to the list of learning goals, above. However, you can make up for some shortcomings in these steps and/or score some bonus points by implementing one or more of the following feature-ideas. Some are easier, some are harder, but in no particular order:</p>
+<ol>
+<li>
+<p>The Quotes API tends to contains lots of duplicate quotes! Filter out these duplicate quotes for a better user experience.</p>
+</li>
+<li>
+<p>Show a nice &quot;error&quot; message when no quotes can be found for some searched keyword.</p>
+</li>
+<li>
+<p>Being able to add a new quote to the list. You can ask for a text + author, or just the text and then hard-code the author to be you!</p>
+</li>
+<li>
+<p>At the top of the page, count the number of quotes and the number of distinct authors in the list of found quotes. There may be many quotes, but just a few authors they can be attributes to.</p>
+</li>
+</ol>
+</div></body></html>
+    </div>
+  </body>
+</html>

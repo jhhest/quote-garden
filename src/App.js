@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
+import QuoteSearcher from "./Components/QuoteSearcher";
 
 function App() {
   return (
     <div className="App">
-      <h1>Step 1. Setting up</h1>
-      <p>Create a React app with create-react-app.</p>
-      <p>Clean up App.js </p>
+      <QuoteSearcher />
     </div>
   );
 }

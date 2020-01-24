@@ -1,1 +1,12 @@
-@import-normalize;
+/* @import-normalize; */
+@import url("https://fonts.googleapis.com/css?family=Caveat|Dancing+Script|Sacramento&display=swap");
+blockquote > p {
+  font-size: 2rem;
+  font-family: "Sacramento", cursive;
+  margin-top: 0;
+}
+blockquote {
+  background-color: lightblue;
+  padding: 1rem;
+  margin: 2rem;
+}

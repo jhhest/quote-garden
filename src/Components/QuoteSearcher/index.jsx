@@ -28,13 +28,13 @@ export class QuoteSearcher extends Component {
     this.setState({ quotes: mutateFetchedQuotes });
   };
 
-  handleChange = event =>
-    this.setState({ searchValue: event.target.value });
+  handleChange = event => this.setState({ searchValue: event.target.value });
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({ fetching: true });
-    this.searchQuote(this.state.searchValue);
+    this.setState({ fetching: true }, () => {
+      this.searchQuote(this.state.searchValue);
+    });
   };
 
   searchQuote = keyword => {
@@ -59,7 +59,6 @@ export class QuoteSearcher extends Component {
     this.setState({ fetching: false });
   };
 
-  
   evaluateInput = () => {
     const { error, searchValue, quotes, initialStart } = this.state;
     if (error === true && searchValue === "") {

@@ -1,18 +1,7 @@
 import React, { Component, Fragment } from "react";
 
 export class Quote extends Component {
-  state = {
-    like: null
-  };
-  likeButton = () => {
-    return null;
-  };
-
-  dislikeButton = () => {
-    return null;
-  };
-
-  componentDidMount() {}
+// TODO: implement propTypes
 
   likeColor = input => {
     if (input === true) {
@@ -25,20 +14,20 @@ export class Quote extends Component {
   };
 
   render() {
-    const { like } = this.state;
-    return (
+    const { author, text, numLike, setLike, setDislike } = this.props;
+      return (
       <Fragment>
-        <blockquote className={this.likeColor(like)}>
-          <p>{this.props.text}</p>
+        <blockquote className={this.likeColor(numLike)}>
+          <p>{text}</p>
           <footer>
-            <section>
-              By: <em>{this.props.author}</em>
+            <section style={{ marginTop: "1rem" }}>
+              By: <em>{author}</em>
             </section>
-            <section style={{ marginTop: "1em" }}>
-              <button onClick={() => {this.setState({like: true})}}>
+            <section style={{ marginTop: "1rem" }}>
+              <button onClick={setLike}>
                 <i className="fa fa-thumbs-up"></i>
               </button>
-              <button onClick={() => {this.setState({like: false})}}>
+              <button onClick={setDislike}>
                 <i className="fa fa-thumbs-down"></i>
               </button>
             </section>

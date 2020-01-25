@@ -31,7 +31,7 @@ export class QuoteSearcher extends Component {
   handleChange = event =>
     this.setState({ [event.target.name]: event.target.value });
 
-  handleSumbit = event => {
+  handleSubmit = event => {
     event.preventDefault();
     this.setState({ fetching: true });
     this.searchQuote(this.state.searchValue);
@@ -86,7 +86,7 @@ export class QuoteSearcher extends Component {
     return (
       <Fragment>
         <h1 style={{ textAlign: "center" }}>QuoteSearcher.</h1>
-        <form onSubmit={this.handleSumbit} style={{ textAlign: "center" }}>
+        <form onSubmit={this.handleSubmit} style={{ textAlign: "center" }}>
           <input
             type="text"
             name="searchValue"

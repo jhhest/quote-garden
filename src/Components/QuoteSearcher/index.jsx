@@ -37,64 +37,31 @@ export class QuoteSearcher extends Component {
       />
     ));
 
-  setLike = id => {
-    console.log("this is id:", id);
-
-    const copyOfState = { ...this.state };
-    console.log("this is a copy of state", copyOfState);
-    const copyOfQuotesArr = [...this.state.quotes];
-    console.log(
-      "this is a copy quotes array that is in state",
-      copyOfQuotesArr
-    );
-
-    const mutateFetchedQuotes = copyOfQuotesArr.map(quote =>
-      quote.id === id ? { ...quote, numLike: true } : quote
-    );
-    console.log(
-      "this is a copy quotes array that is in state",
-      mutateFetchedQuotes
-    );
-    this.setState({ quotes: mutateFetchedQuotes });
-    //Works!
-  };
-
-  setDislike = id => {
-    console.log("this is id:", id);
-
-    const copyOfState = { ...this.state };
-    console.log("this is a copy of state", copyOfState);
-    const copyOfQuotesArr = [...this.state.quotes];
-    console.log(
-      "this is a copy quotes array that is in state",
-      copyOfQuotesArr
-    );
-
-    const mutateFetchedQuotes = copyOfQuotesArr.map(quote =>
-      quote.id === id ? { ...quote, numLike: false } : quote
-    );
-    console.log(
-      "this is a copy quotes array that is in state",
-      mutateFetchedQuotes
-    );
-    this.setState({ quotes: mutateFetchedQuotes });
-    //Works!
-  };
-
-  // FIXME: merge the function SetLike and SetDislike in one function.
-
   setLiked = (id, like) => {
     const mutateFetchedQuotes = [...this.state.quotes].map(quote =>
       quote.id === id ? { ...quote, numLike: like } : quote
     );
     this.setState({ quotes: mutateFetchedQuotes });
   };
+
   render() {
     const { fetching, quotes } = this.state;
 
     return (
       <Fragment>
         <h1 style={{ textAlign: "center" }}>QuoteSearcher.</h1>
+        <p>
+          Liked:<i className="fa fa-thumbs-up"></i>
+          {quotes.filter( quote => quote.numLike === true).length}
+        </p>
+        <p>
+          Disliked:<i className="fa fa-thumbs-down"></i>
+          {quotes.filter( quote => quote.numLike === false).length}
+        </p>
+        <p>Total of Quotes: {quotes.length}</p>
+        <p>Total of not liked/disliked: {quotes.filter( quote => quote.numLike === null).length}</p>
+        <p>Total of not liked/disliked: {quotes.filter( quote => !(quote.numLike === null)).length}</p>
+        {/* TODO:Make it look nicer */}
         {fetching && <p>Loading...</p>}
         <section id="center-quotes">
           {!fetching && this.showQuotes(quotes)}

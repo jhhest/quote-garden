@@ -49,14 +49,26 @@ export class QuoteSearcher extends Component {
               numLike: null
             };
           }),
-          fetching: false
+          fetching: false,
+          error: false
         })
       )
-      .catch(error => this.setState({ error: error }));
-    this.setState({ searchValue: "" });
+      .catch(error => this.setState({ error: true }));
+    this.setState({ fetching: false });
+  };
+
+  checkInput = () => {
+    const { error, searchValue, quotes } = this.state;
+    if (error === true && searchValue === "") {
+      return "Please fill in a keyword in the searchbar and press the searchbutton";
+    }
+    if (error === false && quotes === []) {
+      return `Your keyword to search for quotes is ${searchValue}. We did not found any results. Please try again with another Keyword`;
+    }
+    return <p>We found {quotes.length} result(s) with your keyword {searchValue}</p>;
   };
   render() {
-    const { fetching, quotes, error, searchValue } = this.state;
+    const { fetching, quotes, searchValue } = this.state;
 
     return (
       <Fragment>
@@ -71,9 +83,8 @@ export class QuoteSearcher extends Component {
           />
           <input type="submit" value="search" />
         </form>
+        <p>{this.checkInput()}</p>
 
-        {error && <p>Some error occured. Please don't try to ruin my app. </p>}
-        
         <p>
           Liked:<i className="fa fa-thumbs-up"></i>
           {quotes.filter(quote => quote.numLike === true).length}
@@ -82,7 +93,6 @@ export class QuoteSearcher extends Component {
           Disliked:<i className="fa fa-thumbs-down"></i>
           {quotes.filter(quote => quote.numLike === false).length}
         </p>
-        <p>Total of Quotes: {quotes.length}</p>
         <p>
           {" "}
           Total of not liked/disliked:{" "}

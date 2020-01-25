@@ -4,7 +4,8 @@ import Quote from "./Quote";
 export class QuoteSearcher extends Component {
   state = {
     fetching: true,
-    quotes: []
+    quotes: [],
+    searchValue: ""
   };
 
   componentDidMount() {
@@ -44,23 +45,41 @@ export class QuoteSearcher extends Component {
     this.setState({ quotes: mutateFetchedQuotes });
   };
 
+  handleChange = event => this.setState({ [event.target.name]: event.target.value })
+
   render() {
     const { fetching, quotes } = this.state;
 
     return (
       <Fragment>
         <h1 style={{ textAlign: "center" }}>QuoteSearcher.</h1>
+        <form>
+          <input
+            type="text"
+            name="searchValue"
+            placeholder="Search Quotes"
+            onChange={this.handleChange}
+            value={this.state.text}
+          />
+          <input type="submit" value="search" />
+        </form>
         <p>
           Liked:<i className="fa fa-thumbs-up"></i>
-          {quotes.filter( quote => quote.numLike === true).length}
+          {quotes.filter(quote => quote.numLike === true).length}
         </p>
         <p>
           Disliked:<i className="fa fa-thumbs-down"></i>
-          {quotes.filter( quote => quote.numLike === false).length}
+          {quotes.filter(quote => quote.numLike === false).length}
         </p>
         <p>Total of Quotes: {quotes.length}</p>
-        <p>Total of not liked/disliked: {quotes.filter( quote => quote.numLike === null).length}</p>
-        <p>Total of not liked/disliked: {quotes.filter( quote => !(quote.numLike === null)).length}</p>
+        <p>
+          Total of not liked/disliked:{" "}
+          {quotes.filter(quote => quote.numLike === null).length}
+        </p>
+        <p>
+          Total of not liked/disliked:{" "}
+          {quotes.filter(quote => !(quote.numLike === null)).length}
+        </p>
         {/* TODO:Make it look nicer */}
         {fetching && <p>Loading...</p>}
         <section id="center-quotes">

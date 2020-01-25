@@ -40,7 +40,15 @@ export class QuoteSearcher extends Component {
   searchQuote = keyword => {
     fetch(`https://quote-garden.herokuapp.com/quotes/search/${keyword}`)
       .then(resolve => resolve.json())
-      .then(fetchedQuotes =>
+      .then(fetchedQuotes => {
+        const tempArr = [...fetchedQuotes];
+        tempArr.reduce((acc, cv) => {
+          if (!acc.find(element => element === cv)) {
+            acc.push(cv);
+          }
+          return acc;
+        }, []);
+        console.log("this is the tempArr:", tempArr);
         this.setState({
           quotes: fetchedQuotes.results.map(quote => {
             return {
@@ -53,8 +61,8 @@ export class QuoteSearcher extends Component {
           fetching: false,
           error: false,
           initialStart: "No"
-        })
-      )
+        });
+      })
       .catch(error => this.setState({ error: true, initialStart: "No" }));
     this.setState({ fetching: false });
   };

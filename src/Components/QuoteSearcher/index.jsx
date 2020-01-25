@@ -31,8 +31,8 @@ export class QuoteSearcher extends Component {
         text={quote.quoteText}
         author={quote.quoteAuthor}
         key={quote.id}
-        setLike={() => this.setLike(quote.id)}
-        setDislike={() => this.setDislike(quote.id)}
+        setLike={() => this.setLiked(quote.id, true)}
+        setDislike={() => this.setLiked(quote.id, false)}
         numLike={quote.numLike}
       />
     ));
@@ -56,10 +56,10 @@ export class QuoteSearcher extends Component {
       mutateFetchedQuotes
     );
     this.setState({ quotes: mutateFetchedQuotes });
-      //Works!
+    //Works!
   };
 
-  setDislike = (id) => {
+  setDislike = id => {
     console.log("this is id:", id);
 
     const copyOfState = { ...this.state };
@@ -78,9 +78,17 @@ export class QuoteSearcher extends Component {
       mutateFetchedQuotes
     );
     this.setState({ quotes: mutateFetchedQuotes });
-      //Works!
+    //Works!
   };
 
+  // FIXME: merge the function SetLike and SetDislike in one function.
+
+  setLiked = (id, like) => {
+    const mutateFetchedQuotes = [...this.state.quotes].map(quote =>
+      quote.id === id ? { ...quote, numLike: like } : quote
+    );
+    this.setState({ quotes: mutateFetchedQuotes });
+  };
   render() {
     const { fetching, quotes } = this.state;
 

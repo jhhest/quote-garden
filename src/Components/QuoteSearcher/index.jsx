@@ -41,10 +41,16 @@ export class QuoteSearcher extends Component {
     fetch(`https://quote-garden.herokuapp.com/quotes/search/${keyword}`)
       .then(resolve => resolve.json())
       .then(fetchedQuotes => {
-        const tempArr = [...fetchedQuotes];
+        const tempArr = JSON.parse(JSON.stringify(fetchedQuotes.results));
+        console.log("tempArr", tempArr);
         tempArr.reduce((acc, cv) => {
-          if (!acc.find(element => element === cv)) {
-            acc.push(cv);
+          console.log("acc boolean:", acc.some(element => element.quoteText !== cv.quoteText))
+          console.log("cv.quotetext:",cv.quoteText);
+          console.log("acc is:", acc)
+          console.log("cv is", cv);
+          
+          if (acc.some(element => element.quoteText !== cv.quoteText)) {
+            return [...acc, cv];
           }
           return acc;
         }, []);

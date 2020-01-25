@@ -63,8 +63,10 @@ export class QuoteSearcher extends Component {
           initialStart: "No"
         });
       })
-      .catch(error => this.setState({ error: true, initialStart: "No" }));
-    this.setState({ fetching: false });
+      .catch(error => {
+        console.log(error);
+        this.setState({ error: true, initialStart: "No" });
+      });
   };
 
   evaluateInput = () => {

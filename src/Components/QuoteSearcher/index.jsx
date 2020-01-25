@@ -58,6 +58,8 @@ export class QuoteSearcher extends Component {
       .catch(error => this.setState({ error: true, initialStart: "No" }));
     this.setState({ fetching: false });
   };
+
+  
   evaluateInput = () => {
     const { error, searchValue, quotes, initialStart } = this.state;
     if (error === true && searchValue === "") {
@@ -72,8 +74,11 @@ export class QuoteSearcher extends Component {
       );
     }
     if (initialStart !== "Yes") {
-      return <p>We found {quotes.length} result(s) with your keyword {searchValue}</p>
-      ;
+      return (
+        <p>
+          We found {quotes.length} result(s) with your keyword {searchValue}
+        </p>
+      );
     }
   };
   render() {

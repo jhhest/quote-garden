@@ -29,7 +29,7 @@ export class QuoteSearcher extends Component {
   };
 
   handleChange = event =>
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ searchValue: event.target.value });
 
   handleSubmit = event => {
     event.preventDefault();

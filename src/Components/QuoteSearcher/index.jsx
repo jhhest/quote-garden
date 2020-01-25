@@ -5,7 +5,8 @@ export class QuoteSearcher extends Component {
   state = {
     fetching: false,
     quotes: [],
-    searchValue: ""
+    searchValue: "",
+    initialStart: "Yes"
   };
 
   showQuotes = quotesArray =>
@@ -50,26 +51,33 @@ export class QuoteSearcher extends Component {
             };
           }),
           fetching: false,
-          error: false
+          error: false,
+          initialStart: "No"
         })
       )
-      .catch(error => this.setState({ error: true }));
+      .catch(error => this.setState({ error: true, initialStart: "No" }));
     this.setState({ fetching: false });
   };
-
-  checkInput = () => {
-    const { error, searchValue, quotes } = this.state;
+  evaluateInput = () => {
+    const { error, searchValue, quotes, initialStart } = this.state;
     if (error === true && searchValue === "") {
       return "Please fill in a keyword in the searchbar and press the searchbutton";
     }
     if (error === false && quotes === []) {
-      return `Your keyword to search for quotes is ${searchValue}. We did not found any results. Please try again with another Keyword`;
+      return (
+        <p>
+          Your keyword to search for quotes is {searchValue}. We did not found
+          any results. Please try again with another Keyword
+        </p>
+      );
     }
-    return <p>We found {quotes.length} result(s) with your keyword {searchValue}</p>;
+    if (initialStart !== "Yes") {
+      return <p>We found {quotes.length} result(s) with your keyword {searchValue}</p>
+      ;
+    }
   };
   render() {
     const { fetching, quotes, searchValue } = this.state;
-
     return (
       <Fragment>
         <h1 style={{ textAlign: "center" }}>QuoteSearcher.</h1>
@@ -83,7 +91,7 @@ export class QuoteSearcher extends Component {
           />
           <input type="submit" value="search" />
         </form>
-        <p>{this.checkInput()}</p>
+        {this.evaluateInput()}
 
         <p>
           Liked:<i className="fa fa-thumbs-up"></i>

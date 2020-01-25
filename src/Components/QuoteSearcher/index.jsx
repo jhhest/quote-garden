@@ -8,24 +8,6 @@ export class QuoteSearcher extends Component {
     searchValue: ""
   };
 
-  // componentDidMount() {
-  //   fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
-  //     .then(resolve => resolve.json())
-  //     .then(fetchedQuotes =>
-  //       this.setState({
-  //         quotes: fetchedQuotes.results.map(quote => {
-  //           return {
-  //             id: quote._id,
-  //             quoteAuthor: quote.quoteAuthor,
-  //             quoteText: quote.quoteText,
-  //             numLike: null
-  //           };
-  //         }),
-  //         fetching: false
-  //       })
-  //     );
-  // }
-
   showQuotes = quotesArray =>
     quotesArray.map(quote => (
       <Quote
@@ -50,12 +32,11 @@ export class QuoteSearcher extends Component {
 
   handleSumbit = event => {
     event.preventDefault();
-    this.setState({fetching: true})
+    this.setState({ fetching: true });
     this.searchQuote(this.state.searchValue);
   };
 
   searchQuote = keyword => {
-    console.log("we searched a quote", keyword);
     fetch(`https://quote-garden.herokuapp.com/quotes/search/${keyword}`)
       .then(resolve => resolve.json())
       .then(fetchedQuotes =>
@@ -70,11 +51,12 @@ export class QuoteSearcher extends Component {
           }),
           fetching: false
         })
-      ).catch( error => this.setState({error: error}));
+      )
+      .catch(error => this.setState({ error: error }));
     this.setState({ searchValue: "" });
   };
   render() {
-    const { fetching, quotes, error } = this.state;
+    const { fetching, quotes, error, searchValue } = this.state;
 
     return (
       <Fragment>
@@ -85,11 +67,13 @@ export class QuoteSearcher extends Component {
             name="searchValue"
             placeholder="Search Quotes"
             onChange={this.handleChange}
-            value={this.state.text}
+            value={searchValue}
           />
           <input type="submit" value="search" />
         </form>
-        {error && <p>Some error occured. Please contact your adminstrator.</p>}
+
+        {error && <p>Some error occured. Please don't try to ruin my app. </p>}
+        
         <p>
           Liked:<i className="fa fa-thumbs-up"></i>
           {quotes.filter(quote => quote.numLike === true).length}
@@ -100,6 +84,7 @@ export class QuoteSearcher extends Component {
         </p>
         <p>Total of Quotes: {quotes.length}</p>
         <p>
+          {" "}
           Total of not liked/disliked:{" "}
           {quotes.filter(quote => quote.numLike === null).length}
         </p>
@@ -107,7 +92,6 @@ export class QuoteSearcher extends Component {
           Total of not liked/disliked:{" "}
           {quotes.filter(quote => !(quote.numLike === null)).length}
         </p>
-        {/* TODO:Make it look nicer */}
         {fetching && <p>Loading...</p>}
         <section id="center-quotes">
           {!fetching && this.showQuotes(quotes)}
